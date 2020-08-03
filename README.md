@@ -21,32 +21,47 @@ $ terraform init -backend-config="storage_account_name=mikkystorage" -backend-co
 USAGE 
 =============
 $ terraform --version
+
 $ terraform init (very first cmd to execute; this cmd will install modules, backend and provider plugins)
+
 $ terraform get -update=true 
+
 $ terraform plan (writes a plan to apply to target provider say Azure/AWs.etc; allows user to see the actions before
 commiting the permanent changes at provider side) 
+
 $ terraform plan -out plan.tfplan
 
 $ terraform apply
+
 $ terraform apply plan.tfplan (for complex scenarios, persist the execution plan to a file, and apply the plan o/p)
+
 $ terraform apply -auto-approve (same as -y for apt install) ; it will auto approve instead nagging 'yes' consent 
+
 $ terraform destroy (delete all resources, no way to reverse) 
+
 $ terraform plan -destroy 
+
 $ terraform plan -destroy -out plan.destroy.rfplan 
 
 $ terraform graph | dot -Tpng > mydeployment.png 
+
 $ terraform validate
+
 $ terraform providers (displays the currently configured cloud provider)
 
 STATE
 =============
 $ terraform state pull > terraform.tfstate (pulls the remote state to local copy)
+
 $ terraform state push 
 
 WORKSPACE 
 =============
 $ terraform workspace new dev 
+
 $ terraform workspace select dev 
+
 $ terraform workspace list 
+
 $ terraform workspace show 
 
