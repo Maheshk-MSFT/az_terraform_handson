@@ -7,8 +7,11 @@ Learning Notes from my desk: Aug.3
 INSTALLATION
 =============
 $ curl -O https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip
+
 $ sudo unzip terraform_0.12.29_linux_amd64.zip -d /mnt/d/terraform/
+
 $ rm terraform_0.12.29_linux_amd64.zip (optional)
+
 $ cd /mnt/d/terraform/ 
 
 SETTING STAGE 
