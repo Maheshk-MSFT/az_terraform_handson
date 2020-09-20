@@ -65,3 +65,51 @@ $ terraform workspace list
 
 $ terraform workspace show 
 
+VARIOUS WAYST O DECLARE AND USE VARIABLES AND IN TERRAFORM BLOCKS
+==================================================================
+src: https://www.terraform.io/docs/configuration/variables.html#tuple-lt-type-gt-
+
+option1: (simple tf file) 
+-------------------------
+variables.tf
+
+variable "location"{
+default = "uswest2"
+}
+
+option2: (simple command line) 
+-----------------------------
+terraform apply -var="location=uswest2"
+
+option3: (flat file with tfvar extension)
+-------------------------------------------------------------
+terraform.tfvars (exactly the same name) 
+terraform.tfvars.json
+.auto.tfvars or .auto.tfvars.json
+ 
+location="uswest2"
+
+option4: (flat file passed in console arg)
+------------------------------------------------------------------
+sensitive.tfvars 
+location="uswest2"
+
+cmd> terraform apply -var-file="sensitive.tfvars" 
+
+option5: (ENV variable setting)
+-------------------------------------
+export TF_VAR_location="uswest2"  (defaults to literal, need not to be quoted) 
+$ export TF_VAR_image_id=ami-abc123
+
+option6: (use unset to remove from env but prompted during 'apply' 
+----------------------------------------------------------------------
+unset TF_VAR_location 
+> enter the value in GUI 
+
+IMP: TF loads variables in the following order, with later sources taking precedence over earlier ones:
+a. Environment variables
+b. The terraform.tfvars file, if present.
+c. The terraform.tfvars.json file, if present.
+d. Any *.auto.tfvars or *.auto.tfvars.json files 
+e. Any -var and -var-file options on the command line 
+
